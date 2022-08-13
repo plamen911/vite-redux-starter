@@ -1,15 +1,19 @@
+import { Fragment } from 'react'
 import { useSelector } from 'react-redux'
-import './App.css'
-import Login from './components/Login'
-import TopNav from './components/TopNav'
 
-function App() {
+import Login from './components/Login'
+import Header from './components/Header'
+import UserProfile from './components/UserProfile'
+
+function App () {
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
 
   return (
-    <div className="App">
-      {isLoggedIn ? <TopNav/> : <Login/>}
-    </div>
+    <Fragment>
+      <Header/>
+      {!isLoggedIn && <Login/>}
+      {isLoggedIn && <UserProfile/>}
+    </Fragment>
   )
 }
 

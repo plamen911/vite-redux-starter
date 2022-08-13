@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+
+import classes from './Login.module.css'
 import { authActions } from '../store/auth'
 
 export default function Login () {
@@ -23,30 +25,36 @@ export default function Login () {
   }
 
   return (
-    <div>
-      <form onSubmit={loginHandler}>
-        <div>
-          <input type="text"
-                 name="username"
-                 value={username}
-                 onChange={e => setUsername(e.target.value)}
-                 placeholder="Username"
-                 autoComplete="username"
-          />
-        </div>
-        <div>
-          <input type="password"
-                 name="password"
-                 value={password}
-                 onChange={e => setPassword(e.target.value)}
-                 placeholder="Password"
-                 autoComplete="current-password"
-          />
-        </div>
-        <div>
-          <button type="submit">Login</button>
-        </div>
-      </form>
-    </div>
+    <main className={classes.auth}>
+      <section>
+        <form onSubmit={loginHandler}>
+          <div className={classes.control}>
+            <label htmlFor="username">Username</label>
+            <input type="text"
+                   id="username"
+                   name="username"
+                   value={username}
+                   onChange={e => setUsername(e.target.value)}
+                   placeholder="Username"
+                   autoComplete="username"
+            />
+          </div>
+          <div className={classes.control}>
+            <label htmlFor='password'>Password</label>
+            <input type="password"
+                   id="password"
+                   name="password"
+                   value={password}
+                   onChange={e => setPassword(e.target.value)}
+                   placeholder="Password"
+                   autoComplete="current-password"
+            />
+          </div>
+          <div>
+            <button type="submit">Login</button>
+          </div>
+        </form>
+      </section>
+    </main>
   )
 }
