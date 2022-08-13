@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { loggedIn } from '../features/auth/authSlice'
+import { authActions } from '../store/auth'
 
 export default function Login () {
   const [loadingMsg, setLoadingMsg] = useState(null)
@@ -9,12 +9,12 @@ export default function Login () {
 
   const dispatch = useDispatch()
 
-  const handleSubmit = e => {
+  const loginHandler = e => {
     e.preventDefault()
     setLoadingMsg('Logging in...')
     setTimeout(() => {
       setLoadingMsg(null)
-      dispatch(loggedIn({username}))
+      dispatch(authActions.loggedIn({username}))
     }, 1000)
   }
 
@@ -24,7 +24,7 @@ export default function Login () {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={loginHandler}>
         <div>
           <input type="text"
                  name="username"
