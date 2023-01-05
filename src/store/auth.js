@@ -11,10 +11,6 @@ export const auth = createSlice({
   initialState,
   reducers: {
     setLoadingMessage: (state, action) => {
-
-      console.log('--> action.payload')
-      console.log(action.payload)
-
       state.loadingMsg = action.payload
     },
     loggedIn: (state, action) => {
