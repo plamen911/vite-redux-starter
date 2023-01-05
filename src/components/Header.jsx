@@ -6,8 +6,10 @@ import { authActions } from '../store/auth'
 
 export default function Header () {
   const [loadingMsg, setLoadingMsg] = useState(null)
+
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
   const username = useSelector(state => state.auth.username)
+
   const dispatch = useDispatch()
 
   const logoutHandler = () => {
@@ -18,14 +20,11 @@ export default function Header () {
     }, 1000)
   }
 
-  if (loadingMsg) {
-    return <div>{loadingMsg}</div>
-  }
-
   return (
     <header className={classes.header}>
       <h1>Redux Auth</h1>
-      {isLoggedIn && (
+      {loadingMsg && <div>{loadingMsg}</div>}
+      {!loadingMsg && isLoggedIn && (
         <nav>
           <ul>
             <li>
