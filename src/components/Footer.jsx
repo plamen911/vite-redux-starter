@@ -12,10 +12,10 @@ export default function Footer() {
         <nav>
           <ul>
             <li>
-              <a href='/'>My Products</a>
+              <a href='#'>My Products</a>
             </li>
             <li>
-              <a href='/'>My Sales</a>
+              <a href='#'>My Sales</a>
             </li>
           </ul>
         </nav>

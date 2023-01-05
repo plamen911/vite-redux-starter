@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+  loadingMsg: null,
   isLoggedIn: false,
   username: null
 }
@@ -9,6 +10,13 @@ export const auth = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    setLoadingMessage: (state, action) => {
+
+      console.log('--> action.payload')
+      console.log(action.payload)
+
+      state.loadingMsg = action.payload
+    },
     loggedIn: (state, action) => {
       state.isLoggedIn = true
       state.username = action.payload.username

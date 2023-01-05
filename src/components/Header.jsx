@@ -5,17 +5,18 @@ import classes from './Header.module.css'
 import { authActions } from '../store/auth'
 
 export default function Header () {
-  const [loadingMsg, setLoadingMsg] = useState(null)
+  // const [loadingMsg, setLoadingMsg] = useState(null)
 
+  const loadingMsg = useSelector(state => state.auth.loadingMsg)
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn)
   const username = useSelector(state => state.auth.username)
 
   const dispatch = useDispatch()
 
   const logoutHandler = () => {
-    setLoadingMsg('Logging out...')
+    dispatch(authActions.setLoadingMessage('Logging out...'))
     setTimeout(() => {
-      setLoadingMsg(null)
+      dispatch(authActions.setLoadingMessage(null))
       dispatch(authActions.loggedOut())
     }, 1000)
   }
@@ -28,10 +29,10 @@ export default function Header () {
         <nav>
           <ul>
             <li>
-              <a href='/'>My Products</a>
+              <a href='#'>My Products</a>
             </li>
             <li>
-              <a href='/'>My Sales</a>
+              <a href='#'>My Sales</a>
             </li>
             <li>
               Hello, {username}!
